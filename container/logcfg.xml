@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://v8.1c.ru/v8/tech-log">
+    <log location="/var/log/1C" history="360">
+        <event>
+            <ne property="name" value=""/>
+        </event>
+        <property name="all">
+        </property>
+    </log>
+</config>
