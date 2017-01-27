@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -qq update \
   && apt-get -qq install --yes --no-install-recommends ca-certificates wget locales \
+  && apt-get -qq install --yes --no-install-recommends fontconfig imagemagick \
   && wget --quiet -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
   && chmod +x /usr/local/bin/gosu \
   && gosu nobody true
