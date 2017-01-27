@@ -9,8 +9,15 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -qq update \
   && apt-get -qq install --yes --no-install-recommends ca-certificates wget locales \
+  && `#----- Install the dependencies -----` \
   && apt-get -qq install --yes --no-install-recommends fontconfig imagemagick \
-  && wget --quiet -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
+  && `#----- Deal with ttf-mscorefonts-installer -----` \
+  && apt-get -qq install --yes --no-install-recommends xfonts-utils cabextract \
+  && wget --quiet --output-document /tmp/ttf-mscorefonts-installer_3.6_all.deb http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb \
+  && dpkg --install /tmp/ttf-mscorefonts-installer_3.6_all.deb \
+  && rm /tmp/ttf-mscorefonts-installer_3.6_all.deb \
+  && `#----- Install gosu -----` \
+  && wget --quiet --output-document /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
   && chmod +x /usr/local/bin/gosu \
   && gosu nobody true
 
