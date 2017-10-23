@@ -22,10 +22,21 @@ docker-1c-server -- это сервер 1С:Предприятия в конте
 
 Для управления контейнером используйте команды:
 
-    docker stop docker-1c-server
-    docker start docker-1c-server
-    docker restart docker-1c-server
+    docker stop 1c-server
+    docker start 1c-server
+    docker restart 1c-server
 
 ## Где мои данные?
 
 Данные сервера 1С:Предприятия вы можете найти в каталогах `/var/lib/docker/volumes/1c-server-home/_data` (домашний каталог пользователя `usr1cv8`) и `/var/lib/docker/volumes/1c-server-logs/_data` (технологические журналы).
+
+## Как это удалить?
+
+Удалите контейнер:
+
+    docker rm -f 1c-server
+
+:fire: Удалите данные:
+
+    docker volume rm 1c-server-home
+    docker volume rm 1c-server-logs
