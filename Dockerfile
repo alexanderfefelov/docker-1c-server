@@ -11,7 +11,7 @@ RUN apt-get -qq update \
   && `#----- Deal with ttf-mscorefonts-installer -----` \
   && apt-get -qq install --yes --no-install-recommends xfonts-utils cabextract \
   && wget --quiet --output-document /tmp/ttf-mscorefonts-installer_3.6_all.deb http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb \
-  && dpkg --install /tmp/ttf-mscorefonts-installer_3.6_all.deb \
+  && dpkg --install /tmp/ttf-mscorefonts-installer_3.6_all.deb 2> /dev/null \
   && rm /tmp/ttf-mscorefonts-installer_3.6_all.deb \
   && `#----- Install gosu -----` \
   && wget --quiet --output-document /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
@@ -26,9 +26,9 @@ ADD *.deb /tmp/
 ENV PLATFORM_VERSION 83
 ENV SERVER_VERSION 8.3.10-2639
 
-RUN dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-common_${SERVER_VERSION}_amd64.deb \
- && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-server_${SERVER_VERSION}_amd64.deb \
- && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-ws_${SERVER_VERSION}_amd64.deb \
+RUN dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-common_${SERVER_VERSION}_amd64.deb 2> /dev/null \
+ && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-server_${SERVER_VERSION}_amd64.deb 2> /dev/null \
+ && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-ws_${SERVER_VERSION}_amd64.deb 2> /dev/null \
  && rm /tmp/*.deb \
  && mkdir --parent /var/log/1C /home/usr1cv8/.1cv8/1C/1cv8/conf \
  && chown --recursive usr1cv8:grp1cv8 /var/log/1C /home/usr1cv8
