@@ -1,9 +1,8 @@
 FROM ubuntu:xenial
 
-ENV GOSU_VERSION 1.7
-
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV GOSU_VERSION 1.7
 RUN apt-get -qq update \
   && apt-get -qq install --yes --no-install-recommends ca-certificates wget locales \
   && `#----- Install the dependencies -----` \
@@ -25,7 +24,6 @@ ADD *.deb /tmp/
 
 ENV PLATFORM_VERSION 83
 ENV SERVER_VERSION 8.3.10-2639
-
 RUN dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-common_${SERVER_VERSION}_amd64.deb 2> /dev/null \
  && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-server_${SERVER_VERSION}_amd64.deb 2> /dev/null \
  && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-ws_${SERVER_VERSION}_amd64.deb 2> /dev/null \
