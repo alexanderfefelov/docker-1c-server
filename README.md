@@ -38,6 +38,10 @@ docker-1c-server -- это сервер 1С:Предприятия в конте
 
     docker rm -f 1c-server
 
+Удалите образ:
+
+    docker rmi alexanderfefelov/1c-server
+
 :fire: Удалите данные:
 
     docker volume rm 1c-server-home
