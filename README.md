@@ -22,11 +22,11 @@ docker-1c-server -- это сервер 1С:Предприятия в конте
 
 Узнать UID и GID пользователя, с правами которого сервер 1С:Предприятия работает в контейнере, можно с помощью команды
 
-     docker exec 1c-server cat /etc/passwd | grep usr1cv8
+    docker exec 1c-server id usr1cv8
 
 которая выдаст примерно такие данные
 
-    usr1cv8:x:999:1000:1C Enterprise 8 server launcher:/home/usr1cv8:
+    uid=999(usr1cv8) gid=1000(grp1cv8) groups=1000(grp1cv8)
 
 ## Как остановить/запустить/перезапустить контейнер?
 
