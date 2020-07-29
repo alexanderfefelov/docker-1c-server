@@ -27,7 +27,7 @@ ENV SERVER_VERSION 8.3.10-2639
 RUN dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-common_${SERVER_VERSION}_amd64.deb 2> /dev/null \
   && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-server_${SERVER_VERSION}_amd64.deb 2> /dev/null \
   && rm /tmp/*.deb \
-  && mkdir --parent /var/log/1C /home/usr1cv8/.1cv8/1C/1cv8/conf \
+  && mkdir --parents /var/log/1C /home/usr1cv8/.1cv8/1C/1cv8/conf \
   && chown --recursive usr1cv8:grp1cv8 /var/log/1C /home/usr1cv8
 
 COPY container/docker-entrypoint.sh /
