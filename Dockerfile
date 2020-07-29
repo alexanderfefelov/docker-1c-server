@@ -1,7 +1,5 @@
 FROM ubuntu:xenial
 
-ENV DEBIAN_FRONTEND noninteractive
-
 ENV GOSU_VERSION 1.7
 RUN apt-get -qq update \
   && apt-get -qq install --yes --no-install-recommends ca-certificates wget locales \
